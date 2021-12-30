@@ -1,22 +1,22 @@
-import React from "react";
-// import { Form } from "react-bootstrap";
+import React, { useState } from "react";
+import AddName from "./addName";
+import { Button } from "react-bootstrap";
 
 function App(props) {
+  const [modalShow, setModalShow] = useState(false);
   return (
     <div className="container">
-      <h2>Baby Names</h2>
-      <div className="mb-3">
-        <label for="name" className="form-label">
-          Enter Baby Name
-        </label>
-        <input
-          type="text"
-          className="form-control"
-          id="name"
-          placeholder="John doe"
-        />
+      <h2 className="text-center mt-3">Baby Names</h2>
+      <div className="text-end pt-2">
+        <Button variant="primary" onClick={() => setModalShow(true)}>
+          Add Name
+        </Button>
       </div>
-      <div></div>
+      <AddName show={modalShow} onHide={() => setModalShow(false)} />
+
+      <div className=" my-3 names-list">
+        <p>Empty List</p>
+      </div>
     </div>
   );
 }
